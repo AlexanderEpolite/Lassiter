@@ -42,7 +42,11 @@ function startDiscordBot() {
                 const text = r.data.choices[0]?.text as string;
                 
                 worker.api.messages.send(msg.channel_id, {
-                    content: text,
+                    embeds: [
+                        {
+                            description: text,
+                        },
+                    ],
                     message_reference: {
                         channel_id: msg.channel_id,
                         message_id: msg.id,
